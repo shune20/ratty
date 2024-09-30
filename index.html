@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You a Rat?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Are You a Rat?</h1>
+    <button class="button" onclick="startCheck()">Check</button>
+
+    <script>
+        function startCheck() {
+            alert("Press OK to check if you are a rat?");
+            let first = prompt("Are you a rat? Enter YES, NO, or MAYBE").toLowerCase();
+            let output = "";
+
+            switch(first) {
+                case "yes":
+                    alert("You are a rat.");
+                    break;
+                case "no":
+                    output = prompt("What is your name?");
+                    processName(output);
+                    break;
+                case "maybe":
+                    output = prompt("How many walking legs do you have? Two or Four?");
+                    processLegs(output);
+                    break;
+                default:
+                    handleInvalidInput();
+            }
+        }
+
+        function processName(name) {
+            name = name.toLowerCase();
+            if (name === "hein" || name === "hayden" || name === "bob") {
+                alert("Pookie you know you are THE rat ^-^");
+            } else {
+                let legs = prompt("How many walking legs do you have? Two or Four?");
+                processLegs(legs);
+            }
+        }
+
+        function processLegs(legs) {
+            legs = legs.toLowerCase();
+            if (legs === "two") {
+                let name = prompt("What is your name?");
+                if (name.toLowerCase() === "hein" || name.toLowerCase() === "hayden" || name.toLowerCase() === "bob") {
+                    alert("YOU MIGHT JUST BE REMY'S GREAT-GRANDDAD");
+                } else {
+                    alert("You are not a rat.");
+                }
+            } else if (legs === "four") {
+                let canRead = prompt("Can you read and write? (YES or NO)").toLowerCase();
+                if (canRead === "yes") {
+                    let name = prompt("What is your name?");
+                    if (name.toLowerCase() === "hein" || name.toLowerCase() === "hayden" || name.toLowerCase() === "bob") {
+                        alert("Your name has a very rat-like vibe. 145% rat");
+                    } else {
+                        alert("You are not a rat.");
+                    }
+                } else if (canRead === "no") {
+                    alert("YES YOU CAN. You're just a rat-wannabe");
+                } else {
+                    alert("BYE YOU ARE JUST STUPID");
+                }
+            } else {
+                alert("BYE YOU ARE JUST STUPID");
+            }
+        }
+
+        function handleInvalidInput() {
+            let valid = false;
+            while (!valid) {
+                alert("DO AS I SAY. ONLY YES, NO, OR MAYBE");
+                let input = prompt("Just enter YES if you identify yourself as a rat, this is a safe space sweetie");
+                if (input.toLowerCase() === "yes" || input.toLowerCase() === "no" || input.toLowerCase() === "maybe") {
+                    valid = true;
+                    startCheck(); // Restart the check process with valid input
+                }
+            }
+        }
+    </script>
+</body>
+</html>
